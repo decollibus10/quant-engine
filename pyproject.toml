@@ -1,0 +1,72 @@
+[project]
+name = "quant-engine"
+version = "0.1.0"
+description = "Intraday-first stock strategy research engine powered by Backtrader."
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+license = { text = "MIT" }
+authors = [{ name = "decollibus10" }]
+dependencies = [
+    "alpaca-py>=0.42.0",
+    "backtrader==1.9.78.123",
+    "loguru>=0.7.3",
+    "matplotlib>=3.10.0",
+    "numpy>=2.0.0",
+    "pandas>=2.2.0",
+    "pandas-datareader>=0.10.0",
+    "pydantic>=2.10.0",
+    "pydantic-settings>=2.7.0",
+    "pyarrow>=18.0.0",
+    "pyyaml>=6.0.2",
+    "quantstats>=0.0.64",
+    "rich>=13.9.0",
+    "typer>=0.15.0",
+    "yfinance>=0.2.50",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black>=24.10.0",
+    "mypy>=1.13.0",
+    "pytest>=8.3.0",
+    "pytest-cov>=6.0.0",
+    "ruff>=0.8.0",
+]
+
+[project.scripts]
+quant = "quant_engine.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+package = true
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+strict_optional = true
+check_untyped_defs = true
+no_implicit_optional = true
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+markers = [
+    "integration: tests that require external data provider credentials",
+]
