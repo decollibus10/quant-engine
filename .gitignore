@@ -16,3 +16,8 @@ build/
 data/
 results/
 notebooks/.ipynb_checkpoints/
+
+# Local prototype files outside the src/quant_engine package layout.
+/backtest/
+/strategies/
+/main.py
