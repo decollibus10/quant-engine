@@ -21,6 +21,7 @@ dependencies = [
     "quantstats>=0.0.64",
     "rich>=13.9.0",
     "typer>=0.15.0",
+    "pandas-ta-classic>=0.5.44",
     "yfinance>=0.2.50",
 ]
 
